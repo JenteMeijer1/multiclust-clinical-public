@@ -2,7 +2,7 @@
 
 Code release for the clinical multiclust paper analysis.
 
-This repository contains the paper-specific pipeline scripts, notebook code, and table-generation code used for the clinical multiclust analysis. It is intended as an academic code supplement. Restricted study data, generated results, and manuscript files are not included.
+This repository contains the paper-specific pipeline scripts, notebook code, and table-generation code used for the clinical multiclust analysis.
 
 ## Contents
 
@@ -14,10 +14,6 @@ This repository contains the paper-specific pipeline scripts, notebook code, and
 - `notebooks/clinical_paper/PrepareData_demtable_paper1.Rmd`: baseline and demographic table workflow.
 - `table_helpers/`: R helper functions used by the table workflow.
 - `requirements_multiview_env.txt` and `multiview_env.def`: environment specifications.
-
-## Data
-
-The analysis requires restricted study data and private data dictionaries. These files are not distributed in this repository. Paths in `run_profiles/clinical_paper.sh` and `notebooks/clinical_paper/PrepareData_demtable_paper1.Rmd` should be adapted to the local data environment before running.
 
 ## Environment
 
