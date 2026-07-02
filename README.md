@@ -1,46 +1,104 @@
 # multiclust-clinical-public
 
-This repository is a public, paper-specific snapshot for the clinical multiclust paper profile. It is intended to stand on its own as the code release for that profile.
+Public code snapshot for the clinical multiclust paper analysis.
 
-The private development repository remains the source of truth. This public repository may lag behind ongoing private development; see `PUBLIC_SNAPSHOT.md` for the export date, source commit, selected profile, and allowlist.
+This repository contains the paper-specific code needed to run the clinical multiclust profile, generate the baseline/demographic tables, and inspect the downstream analysis notebook. It does not contain restricted study data or generated results.
 
-## Included Workflow
+This is an exported snapshot from a private development repository. The private repository remains the source of truth. See `PUBLIC_SNAPSHOT.md` for the export date, source commit, and exact file list.
 
-- Profile: `run_profiles/clinical_paper.sh`
-- Main analysis notebook: `notebooks/clinical_paper/Clinical_main_work.ipynb`
-- Baseline and demographic tables: `notebooks/clinical_paper/PrepareData_demtable_paper1.Rmd`
-- Baseline table helper: `table_helpers/Basetable_function.R`
-- Demographic table helper: `table_helpers/Demographictable_function.R`
-- Main pipeline entry point: `run.sh`
-- Outer pipeline helper: `outer_pipeline_master.sh`
+## What To Look At First
 
-Only the clinical paper profile, clinical notebook, clinical R Markdown table workflow, and shared runtime modules needed by the pipeline are included. Other private profiles and notebooks are intentionally excluded.
+Start with these files:
+
+1. `run_profiles/clinical_paper.sh` configures the clinical paper run.
+2. `run.sh` starts the scheduled pipeline using that profile.
+3. `outer_pipeline_master.sh` is the outer-pipeline helper used by this profile.
+4. `full_pipeline.py` contains the main multiview clustering workflow.
+5. `notebooks/clinical_paper/PrepareData_demtable_paper1.Rmd` prepares baseline and demographic tables.
+6. `notebooks/clinical_paper/Clinical_main_work.ipynb` contains downstream checks, figures, summaries, and paper-facing analyses.
+
+## Repository Map
+
+```text
+.
+├── run_profiles/
+│   └── clinical_paper.sh
+├── notebooks/
+│   └── clinical_paper/
+│       ├── Clinical_main_work.ipynb
+│       └── PrepareData_demtable_paper1.Rmd
+├── table_helpers/
+│   ├── Basetable_function.R
+│   └── Demographictable_function.R
+├── run.sh
+├── outer_pipeline_master.sh
+├── full_pipeline.py
+├── requirements_multiview_env.txt
+└── multiview_env.def
+```
+
+Other private profiles, notebooks, result folders, data folders, and manuscript files are intentionally excluded.
 
 ## Data
 
-This snapshot contains code only. Real study data, derived private result files, and local output folders are not included. To run the workflow, provide the required study data in the locations configured by `run_profiles/clinical_paper.sh`, or adapt that profile for your environment.
+You need your own approved copy of the restricted study data. This repository does not include:
 
-## Running
+- raw study data
+- private dictionaries
+- generated pipeline outputs
+- generated tables
+- result folders
+- manuscript files
 
-Install the Python/R environment from `requirements_multiview_env.txt` or build the Apptainer/Singularity image from `multiview_env.def`.
+Update paths in `run_profiles/clinical_paper.sh` and `notebooks/clinical_paper/PrepareData_demtable_paper1.Rmd` so they point to your local data and output locations.
+
+## Environment
+
+Use either the Python requirements file or the container definition:
+
+- `requirements_multiview_env.txt`
+- `multiview_env.def`
+
+The R Markdown table workflow also needs R packages used by the helper scripts, including `dplyr`, `readr`, `stringr`, `tidyr`, `readxl`, `gtsummary`, `flextable`, and `effectsize`.
+
+## Typical Run Order
+
+Run the clinical multiclust pipeline:
 
 ```bash
 RUN_PROFILE=clinical_paper bash run.sh
 ```
 
-Run the notebook after pipeline outputs are available:
-
-```bash
-jupyter notebook notebooks/clinical_paper/Clinical_main_work.ipynb
-```
-
-Generate baseline and demographic tables with:
+Generate baseline and demographic tables:
 
 ```bash
 Rscript -e "rmarkdown::render('notebooks/clinical_paper/PrepareData_demtable_paper1.Rmd')"
 ```
 
-The R Markdown file uses the helper scripts in `table_helpers/`. If you move files around, update the `source()` paths in the R Markdown file accordingly.
+Open the notebook after pipeline outputs are available:
+
+```bash
+jupyter notebook notebooks/clinical_paper/Clinical_main_work.ipynb
+```
+
+## For Maintainers
+
+Do not edit this public snapshot by hand unless it is an emergency. Refresh it from the private source repository:
+
+```bash
+cd ../multiclust
+bash tools/export_public_repos.sh clinical_paper ../multiclust-clinical-public
+```
+
+Then review, commit, and push:
+
+```bash
+cd ../multiclust-clinical-public
+git diff
+git add .
+git commit -m "Refresh public snapshot"
+git push
+```
 
 ## Citation
 
