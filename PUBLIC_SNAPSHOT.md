@@ -40,6 +40,13 @@ run_profiles/clinical_paper.sh
 theme.py
 ```
 
+Selected table helpers:
+
+```text
+table_helpers/Basetable_function.R
+table_helpers/Demographictable_function.R
+```
+
 To refresh this repository, rerun the export script from the private repository:
 
 ```bash
@@ -64,13 +71,13 @@ afc879b3a408b098741b57b0fb27476b22a1fbe2
 Export date:
 
 ```text
-2026-06-26
+2026-07-02
 ```
 
 Allowlist content fingerprint:
 
 ```text
-76e298dd978b60d531d34b95839e0f312a60435ad83c3b8f94d85729a8d4c688
+b825857dbcb95e6d802def95e9b1a9d02ecb59c23c21871d1b4b5d66701e5f98
 ```
 
 Allowlist file hashes:
@@ -101,4 +108,6 @@ fcc91d20e40e374bb0d64265fb9171d49290ca17a887c611b9d1cc2ce9a4711f  run.sh
 45b24ed2143c9a8cd768019a53e9dd90551e50011e94594281b06a32461f2a70  run_final_merge_only.sh
 51cb89ef7bc6938d804641af0ae26c8b163f7c3aa3270781413837ab29d20bc7  run_profiles/clinical_paper.sh
 2ac0289d77ef499757376045d59c41602f41ce701357c91955918f5030848266  theme.py
+c954223bb333714ef0c1e6a6918550159df42bc2274fd67151d22cea787ee5b1  table_helpers/Basetable_function.R
+ec20be6ca1f636678b1e9dd7b32634acb19a88bddcb8495c05f94d591c4bac6b  table_helpers/Demographictable_function.R
 ```

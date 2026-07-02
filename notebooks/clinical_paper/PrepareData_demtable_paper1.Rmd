@@ -36,7 +36,7 @@ library(readxl)
 
 ```{r, tidy=TRUE}
 #Load function
-source("path/to/Basetable_function.R")
+source("table_helpers/Basetable_function.R")
 
 # Set path to dictionary
 dictionary_DIR <- "path/to/project/Feature selection/Complete_dictionary.xlsx"
@@ -313,7 +313,7 @@ write_csv(data_month5, 'path/to/multiclust_data/data_month5.csv')
 
 ```{r}
 # Source the demographics function
-source("path/to/Demographictable_function.R")
+source("table_helpers/Demographictable_function.R")
 
 comparison <- 'phenotype'
 
@@ -2165,7 +2165,7 @@ CHR_data <- filter(merged_data, merged_data$phenotype=="CHR")
 CHR_data$included <- ifelse(CHR_data$src_subject_id %in% Labels_data_disc$src_subject_id | CHR_data$src_subject_id %in% Labels_data_test$src_subject_id, yes="included", no="excluded")
 
 # Source the demographics function
-source("path/to/Demographictable_function.R")
+source("table_helpers/Demographictable_function.R")
 
 comparison <- 'included'
 
