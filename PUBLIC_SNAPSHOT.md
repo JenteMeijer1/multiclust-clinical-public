@@ -50,7 +50,7 @@ table_helpers/Demographictable_function.R
 To refresh this repository, rerun the export script from the private repository:
 
 ```bash
-bash tools/export_public_repos.sh clinical_paper ../clinical-paper-public
+bash tools/export_public_repos.sh clinical_paper ../multiclust-clinical-public
 ```
 
 After export, review the diff, commit, and push:

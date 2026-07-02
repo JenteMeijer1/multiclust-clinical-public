@@ -1,4 +1,4 @@
-# clinical-paper-public
+# multiclust-clinical-public
 
 This repository is a public, paper-specific snapshot for the clinical multiclust paper profile. It is intended to stand on its own as the code release for that profile.
 
