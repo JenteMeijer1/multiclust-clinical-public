@@ -1,4 +1,5 @@
 #!/bin/bash
+# Purpose: Submit and coordinate the outer cross-validation folds.
 #SBATCH --job-name=outer_cv        # outer CV
 #SBATCH --array=1-5                # folds 1…5. Change if you change the outer CV folds.
 #SBATCH --nodes=1

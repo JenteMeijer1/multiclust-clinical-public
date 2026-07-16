@@ -5,6 +5,8 @@ date: "2025-01-20"
 output: html_document
 ---
 
+This notebook prepares the clinical-paper data and demographic tables.
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
@@ -277,22 +279,7 @@ for (var in penncnb_vars) {
 }
 ```
 
-```{r}
-# Filter HC group
-hc_data_month2 <- data_month2[data_month2$phenotype == "HC", ]
 
-# Function to compute z-scores based on HC stats
-z_score_hc_month2 <- function(x, varname) {
-  m <- mean(hc_data_month2[[varname]], na.rm = TRUE)
-  s <- sd(hc_data_month2[[varname]], na.rm = TRUE)
-  return((x - m) / s)
-}
-
-# Apply z-scoring to all identified variables
-for (var in penncnb_vars) {
-  data_month2[[var]] <- z_score_hc_month2(data_month2[[var]], var)
-}
-```
 
 
 ### Save preprocessed data
@@ -2178,5 +2165,4 @@ print(table)
 # Save in a word document
 #save_as_docx(table, path = "Dem_table_inVSexcluded.docx")
 ```
-
 
